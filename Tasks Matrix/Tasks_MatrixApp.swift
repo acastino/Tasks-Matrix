@@ -11,7 +11,7 @@ import SwiftUI
 struct Tasks_MatrixApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MatrixView()
         }
     }
 }

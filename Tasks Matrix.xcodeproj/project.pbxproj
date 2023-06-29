@@ -8,17 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		3EB6F74F2A4D7B49005E5571 /* Tasks_MatrixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F74E2A4D7B49005E5571 /* Tasks_MatrixApp.swift */; };
-		3EB6F7512A4D7B49005E5571 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F7502A4D7B49005E5571 /* ContentView.swift */; };
+		3EB6F7512A4D7B49005E5571 /* MatrixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F7502A4D7B49005E5571 /* MatrixView.swift */; };
 		3EB6F7532A4D7B4A005E5571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EB6F7522A4D7B4A005E5571 /* Assets.xcassets */; };
 		3EB6F7562A4D7B4A005E5571 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EB6F7552A4D7B4A005E5571 /* Preview Assets.xcassets */; };
+		3EB6F75F2A4D8B8F005E5571 /* GroupBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F75E2A4D8B8F005E5571 /* GroupBoxView.swift */; };
+		3EB6F7622A4D8BB1005E5571 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F7612A4D8BB1005E5571 /* Matrix.swift */; };
+		3EB6F7642A4D8BC0005E5571 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F7632A4D8BC0005E5571 /* Status.swift */; };
+		3EB6F7662A4D8BCE005E5571 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F7652A4D8BCE005E5571 /* TaskItem.swift */; };
+		3EB6F7692A4D8C0C005E5571 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F7682A4D8C0C005E5571 /* ListView.swift */; };
+		3EB6F76B2A4D8C20005E5571 /* KanbanPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F76A2A4D8C20005E5571 /* KanbanPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3EB6F74B2A4D7B49005E5571 /* Tasks Matrix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tasks Matrix.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB6F74E2A4D7B49005E5571 /* Tasks_MatrixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks_MatrixApp.swift; sourceTree = "<group>"; };
-		3EB6F7502A4D7B49005E5571 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3EB6F7502A4D7B49005E5571 /* MatrixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixView.swift; sourceTree = "<group>"; };
 		3EB6F7522A4D7B4A005E5571 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EB6F7552A4D7B4A005E5571 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3EB6F75E2A4D8B8F005E5571 /* GroupBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupBoxView.swift; sourceTree = "<group>"; };
+		3EB6F7612A4D8BB1005E5571 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		3EB6F7632A4D8BC0005E5571 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		3EB6F7652A4D8BCE005E5571 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		3EB6F7682A4D8C0C005E5571 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		3EB6F76A2A4D8C20005E5571 /* KanbanPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbanPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +63,9 @@
 		3EB6F74D2A4D7B49005E5571 /* Tasks Matrix */ = {
 			isa = PBXGroup;
 			children = (
-				3EB6F7502A4D7B49005E5571 /* ContentView.swift */,
+				3EB6F7602A4D8BA5005E5571 /* Models */,
+				3EB6F7672A4D8BF2005E5571 /* ListView */,
+				3EB6F75D2A4D8B4D005E5571 /* MatrixView */,
 				3EB6F74E2A4D7B49005E5571 /* Tasks_MatrixApp.swift */,
 				3EB6F7522A4D7B4A005E5571 /* Assets.xcassets */,
 				3EB6F7542A4D7B4A005E5571 /* Preview Content */,
@@ -65,6 +79,34 @@
 				3EB6F7552A4D7B4A005E5571 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3EB6F75D2A4D8B4D005E5571 /* MatrixView */ = {
+			isa = PBXGroup;
+			children = (
+				3EB6F7502A4D7B49005E5571 /* MatrixView.swift */,
+				3EB6F75E2A4D8B8F005E5571 /* GroupBoxView.swift */,
+			);
+			path = MatrixView;
+			sourceTree = "<group>";
+		};
+		3EB6F7602A4D8BA5005E5571 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3EB6F7612A4D8BB1005E5571 /* Matrix.swift */,
+				3EB6F7632A4D8BC0005E5571 /* Status.swift */,
+				3EB6F7652A4D8BCE005E5571 /* TaskItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3EB6F7672A4D8BF2005E5571 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				3EB6F7682A4D8C0C005E5571 /* ListView.swift */,
+				3EB6F76A2A4D8C20005E5571 /* KanbanPickerView.swift */,
+			);
+			path = ListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EB6F7512A4D7B49005E5571 /* ContentView.swift in Sources */,
+				3EB6F7622A4D8BB1005E5571 /* Matrix.swift in Sources */,
+				3EB6F7662A4D8BCE005E5571 /* TaskItem.swift in Sources */,
+				3EB6F7642A4D8BC0005E5571 /* Status.swift in Sources */,
+				3EB6F7692A4D8C0C005E5571 /* ListView.swift in Sources */,
+				3EB6F7512A4D7B49005E5571 /* MatrixView.swift in Sources */,
+				3EB6F76B2A4D8C20005E5571 /* KanbanPickerView.swift in Sources */,
 				3EB6F74F2A4D7B49005E5571 /* Tasks_MatrixApp.swift in Sources */,
+				3EB6F75F2A4D8B8F005E5571 /* GroupBoxView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
