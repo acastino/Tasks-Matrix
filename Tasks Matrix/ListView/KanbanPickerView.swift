@@ -10,8 +10,13 @@ import SwiftUI
 struct KanbanPickerView: View {
     
     @Binding var currentStatus: Status
-    var statuses: [Status]
-    var tasksCount: [Status: Int]
+    var tasksByMatrix: [TaskItem]
+    var statuses: [Status] = Status.allCases
+    var tasksCount: [Status: Int] {
+        Dictionary(uniqueKeysWithValues: statuses.map { status in
+            (status, tasksByMatrix.filter(by: status).count)
+        })
+    }
 
     var body: some View {
         Picker("", selection: Binding<Status>(
@@ -32,10 +37,10 @@ struct KanbanPickerView: View {
 
 struct ScrumPickerView_Previews: PreviewProvider {
     static var previews: some View {
+        let matrix: Matrix = .crises
         KanbanPickerView(
             currentStatus: .constant(.todo),
-            statuses: Status.allCases,
-            tasksCount: [.todo: 400, .inProgress: 155, .completed: 555]
+            tasksByMatrix: TaskItem.sampleData.filter(by: matrix)
         )
         .previewLayout(.sizeThatFits)
         .fixedSize()

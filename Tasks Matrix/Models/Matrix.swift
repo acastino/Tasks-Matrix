@@ -43,6 +43,15 @@ enum Matrix: String, CaseIterable {
     var name: String {
         self.rawValue.capitalized
     }
+    
+    var singularTerm: String {
+        switch self {
+        case .crises: return "Crisis"
+        case .goals: return "Goal"
+        case .interruptions: return "Interruption"
+        case .distractions: return "Distraction"
+        }
+    }
 
     var color: Color {
         switch self {
