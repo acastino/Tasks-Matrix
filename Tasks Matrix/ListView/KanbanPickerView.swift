@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct KanbanPickerView: View {
-    
+
     @Binding var currentStatus: Status
     var tasksByMatrix: [TaskItem]
+
     var statuses: [Status] = Status.allCases
     var tasksCount: [Status: Int] {
         Dictionary(uniqueKeysWithValues: statuses.map { status in
@@ -21,9 +22,9 @@ struct KanbanPickerView: View {
     var body: some View {
         Picker("", selection: Binding<Status>(
             get: { currentStatus },
-            set: { tag in
+            set: { status in
                 withAnimation {
-                    currentStatus = tag
+                    currentStatus = status
                 }
             }
         )) {

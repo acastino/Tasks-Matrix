@@ -18,33 +18,16 @@ struct AddEditForm: View {
     var body: some View {
         Form {
             Section {
-                LazyVGrid(columns: columns, alignment: .center) {
+                Picker("Matrix", selection: $taskItem.matrix) {
                     ForEach(matrix, id: \.self) { item in
-                        VStack {
-                            HStack {
-                                Spacer()
-                                Text(item.name)
-                                Spacer()
-                            }
-                            .frame(height: 55)
-                            .background(taskItem.matrix==item ? .white : .gray.opacity(0.001))
-                            .cornerRadius(8)
-                            .onTapGesture {
-                                withAnimation {
-                                    taskItem.matrix = item
-                                }
-                            }
-                        }
-                        .padding(2.5)
-                        .background(.gray.opacity(0.15))
-                        .cornerRadius(10)
+                        Text(item.name)
                     }
                 }
                 Picker("Status", selection: $taskItem.status) {
                     ForEach(statuses, id: \.self) { item in
                         Text(item.rawValue)
                     }
-                }.pickerStyle(.segmented)
+                }
             }
             Section {
                 CustomTextField("Title", text: $taskItem.title)
