@@ -51,8 +51,8 @@
 		3EB6F74D2A4D7B49005E5571 /* Tasks Matrix */ = {
 			isa = PBXGroup;
 			children = (
-				3EB6F74E2A4D7B49005E5571 /* Tasks_MatrixApp.swift */,
 				3EB6F7502A4D7B49005E5571 /* ContentView.swift */,
+				3EB6F74E2A4D7B49005E5571 /* Tasks_MatrixApp.swift */,
 				3EB6F7522A4D7B4A005E5571 /* Assets.xcassets */,
 				3EB6F7542A4D7B4A005E5571 /* Preview Content */,
 			);
