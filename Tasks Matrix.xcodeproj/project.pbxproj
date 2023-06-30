@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E2757F82A4E6771003D09B9 /* RowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2757F72A4E6771003D09B9 /* RowItemView.swift */; };
+		3E2757FA2A4E7999003D09B9 /* ScreenHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2757F92A4E7999003D09B9 /* ScreenHelper.swift */; };
+		3E2757FC2A4F248C003D09B9 /* SwipeSingleRowOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2757FB2A4F248C003D09B9 /* SwipeSingleRowOnly.swift */; };
+		3E2758022A4F4B2D003D09B9 /* ListView+DataChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2758012A4F4B2D003D09B9 /* ListView+DataChanges.swift */; };
 		3E5801CD2A4DF27B00BB44F4 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5801CC2A4DF27B00BB44F4 /* CustomTextField.swift */; };
 		3E5801CF2A4DF86200BB44F4 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5801CE2A4DF86200BB44F4 /* CustomTextEditor.swift */; };
 		3EB6F74F2A4D7B49005E5571 /* Tasks_MatrixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F74E2A4D7B49005E5571 /* Tasks_MatrixApp.swift */; };
@@ -24,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E2757F72A4E6771003D09B9 /* RowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowItemView.swift; sourceTree = "<group>"; };
+		3E2757F92A4E7999003D09B9 /* ScreenHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenHelper.swift; sourceTree = "<group>"; };
+		3E2757FB2A4F248C003D09B9 /* SwipeSingleRowOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeSingleRowOnly.swift; sourceTree = "<group>"; };
+		3E2758012A4F4B2D003D09B9 /* ListView+DataChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListView+DataChanges.swift"; sourceTree = "<group>"; };
 		3E5801CC2A4DF27B00BB44F4 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		3E5801CE2A4DF86200BB44F4 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		3EB6F74B2A4D7B49005E5571 /* Tasks Matrix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tasks Matrix.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +65,8 @@
 			children = (
 				3E5801CC2A4DF27B00BB44F4 /* CustomTextField.swift */,
 				3E5801CE2A4DF86200BB44F4 /* CustomTextEditor.swift */,
+				3E2757F92A4E7999003D09B9 /* ScreenHelper.swift */,
+				3E2757FB2A4F248C003D09B9 /* SwipeSingleRowOnly.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -123,7 +133,9 @@
 			isa = PBXGroup;
 			children = (
 				3EB6F7682A4D8C0C005E5571 /* ListView.swift */,
+				3E2758012A4F4B2D003D09B9 /* ListView+DataChanges.swift */,
 				3EB6F76A2A4D8C20005E5571 /* KanbanPickerView.swift */,
+				3E2757F72A4E6771003D09B9 /* RowItemView.swift */,
 			);
 			path = ListView;
 			sourceTree = "<group>";
@@ -210,15 +222,19 @@
 				3E5801CF2A4DF86200BB44F4 /* CustomTextEditor.swift in Sources */,
 				3EB6F7622A4D8BB1005E5571 /* Matrix.swift in Sources */,
 				3E5801CD2A4DF27B00BB44F4 /* CustomTextField.swift in Sources */,
+				3E2757FA2A4E7999003D09B9 /* ScreenHelper.swift in Sources */,
 				3EB6F7662A4D8BCE005E5571 /* TaskItem.swift in Sources */,
 				3EB6F7642A4D8BC0005E5571 /* Status.swift in Sources */,
 				3EB6F7692A4D8C0C005E5571 /* ListView.swift in Sources */,
+				3E2757FC2A4F248C003D09B9 /* SwipeSingleRowOnly.swift in Sources */,
 				3EB6F7512A4D7B49005E5571 /* MatrixView.swift in Sources */,
 				3EB6F76B2A4D8C20005E5571 /* KanbanPickerView.swift in Sources */,
 				3EB6F76E2A4DB6D5005E5571 /* AddEditForm.swift in Sources */,
+				3E2758022A4F4B2D003D09B9 /* ListView+DataChanges.swift in Sources */,
 				3EB6F7702A4DBBC5005E5571 /* AddEditTaskItemSheet.swift in Sources */,
 				3EB6F74F2A4D7B49005E5571 /* Tasks_MatrixApp.swift in Sources */,
 				3EB6F75F2A4D8B8F005E5571 /* GroupBoxView.swift in Sources */,
+				3E2757F82A4E6771003D09B9 /* RowItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

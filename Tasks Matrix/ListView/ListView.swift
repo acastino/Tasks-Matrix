@@ -21,36 +21,23 @@ struct ListView: View {
         tasksByMatrix.filter(by: currentStatus)
     }
 
-    @State private var isEditing = false
-    @State private var sheetShown = false
-    @State private var modifyingItem: TaskItem = .emptyTask(with: .crises)
+    @State var isEditing = false
+    @State var sheetShown = false
+    @State var modifyingItem: TaskItem = .emptyTask(with: .crises)
 
     var body: some View {
         List {
             ForEach(tasksToShow) { task in
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(task.title)
-                        Spacer()
+                VStack {
+                    RowItemView(task: task) {
+                        openSheetToEdit(task)
+                    } onSwipe: {
+                        moveTaskItemTo(task, status: .inProgress)
                     }
-                    if !task.notes.isEmpty {
-                        Text(task.notes)
-                            .foregroundColor(.gray)
-                            .font(.subheadline)
-                            .lineLimit(2)
-                    }
-                }
-                .background(.gray.opacity(0.001))
-                .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                    showSwipeFromLeadingMenu(task)
-                }
-                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                    showSwipeFromTrailingMenu(task)
-                }
-                .onTapGesture {
-                    openSheetToEdit(task)
                 }
             }
+            .padding(.vertical, -5)
+            .padding(.horizontal, -20)
         }
         .navigationTitle(matrix.name)
         .toolbar {
@@ -77,102 +64,73 @@ struct ListView: View {
         }
     }
 
-    func openSheetWithNewTaskItem() {
-        isEditing = false
-        modifyingItem = .emptyTask(with: matrix)
-        modifyingItem.status = currentStatus
-        sheetShown.toggle()
-    }
+//    func deleteTaskItem(_ task: TaskItem) {
+//        guard let index = allTasks.firstIndex(where: { $0.id == task.id }) else {
+//            return
+//        }
+//        allTasks.remove(at: index)
+//    }
 
-    func openSheetToEdit(_ task: TaskItem) {
-        isEditing = true
-        modifyingItem = task
-        sheetShown.toggle()
-    }
-
-    func moveTaskItemTo(_ task: TaskItem, status: Status) {
-        isEditing = true
-        modifyingItem = task
-        modifyingItem.status = status
-        saveChangesMadeToTaskItem()
-    }
-
-    func saveChangesMadeToTaskItem() {
-        if isEditing {
-            guard let index = allTasks.firstIndex(where: { $0.id == modifyingItem.id }) else {
-                return
-            }
-            withAnimation {
-                allTasks[index] = modifyingItem
-            }
-        } else {
-            withAnimation {
-                allTasks.insert(modifyingItem, at: 0)
-            }
-        }
-    }
-    
-    func deleteTaskItem(_ task: TaskItem) {
-        guard let index = allTasks.firstIndex(where: { $0.id == task.id }) else {
-            return
-        }
-        _ = withAnimation {
-            allTasks.remove(at: index)
-        }
-    }
-
-    func showSwipeFromLeadingMenu(_ task: TaskItem) -> some View {
-        switch currentStatus {
-        case .todo:
-            return AnyView(
-                Button {
-                    moveTaskItemTo(task, status: .inProgress)
-                } label: {
-                    Text("Move to:\n\(Status.inProgress.rawValue)")
-                }
-            )
-        case .inProgress:
-            return AnyView(
-                Button {
-                    moveTaskItemTo(task, status: .completed)
-                } label: {
-                    Text("Move to:\n\(Status.completed.rawValue)")
-                }
-            )
-        case .completed:
-            return AnyView(
-                Button {
-                    deleteTaskItem(task)
-                } label: {
-                    Text("Delete")
-                }
-                    .tint(.red)
-            )
-        }
-    }
-
-    func showSwipeFromTrailingMenu(_ task: TaskItem) -> some View {
-        switch currentStatus {
-        case .inProgress:
-            return AnyView(
-                Button {
-                    moveTaskItemTo(task, status: .todo)
-                } label: {
-                    Text("Move to:\n\(Status.todo.rawValue)")
-                }
-            )
-        case .completed:
-            return AnyView(
-                Button {
-                    moveTaskItemTo(task, status: .inProgress)
-                } label: {
-                    Text("Move to:\n\(Status.inProgress.rawValue)")
-                }
-            )
-        default:
-            return AnyView(EmptyView())
-        }
-    }
+//    func showSwipeFromLeadingMenu(_ task: TaskItem) -> some View {
+//        switch currentStatus {
+//        case .todo:
+//            return AnyView(
+//                Button {
+//                    withAnimation {
+//                        moveTaskItemTo(task, status: .inProgress)
+//                    }
+//                } label: {
+//                    Text("Move to:\n\(Status.inProgress.rawValue)")
+//                }
+//            )
+//        case .inProgress:
+//            return AnyView(
+//                Button {
+//                    withAnimation {
+//                        moveTaskItemTo(task, status: .completed)
+//                    }
+//                } label: {
+//                    Text("Move to:\n\(Status.completed.rawValue)")
+//                }
+//            )
+//        case .completed:
+//            return AnyView(
+//                Button {
+//                    deleteTaskItem(task)
+//                } label: {
+//                    Text("Delete")
+//                }
+//                    .tint(.red)
+//            )
+//        }
+//    }
+//
+//    func showSwipeFromTrailingMenu(_ task: TaskItem) -> some View {
+//        switch currentStatus {
+//        case .inProgress:
+//            return AnyView(
+//                Button {
+//                    withAnimation {
+//                        moveTaskItemTo(task, status: .todo)
+//                    }
+//                } label: {
+//                    Text("Move to:\n\(Status.todo.rawValue)")
+//                }
+//            )
+//        case .completed:
+//            return AnyView(
+//                Button {
+//                    withAnimation {
+//                        moveTaskItemTo(task, status: .inProgress)
+//                    }
+//                } label: {
+//                    Text("Move to:\n\(Status.inProgress.rawValue)")
+//                }
+//            )
+//        default:
+//            return AnyView(EmptyView())
+//        }
+//    }
 }
 
 struct ListView_Previews: PreviewProvider {
