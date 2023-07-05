@@ -66,7 +66,7 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
                     }
                     Spacer(minLength: 0)
                 }
-                .background(.white)
+                .background(.background)
                 .offset(x: rowOffset > 0 ? rowOffset : 0)
                 .gesture(
                     DragGesture().onChanged(onSwipeChanged(_:)).onEnded(onSwipeEnded(_:))
