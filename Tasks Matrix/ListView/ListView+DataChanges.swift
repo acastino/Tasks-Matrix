@@ -21,7 +21,7 @@ extension ListView {
         sheetShown.toggle()
     }
 
-    func moveTaskItemTo(_ task: TaskItem, status: Status) {
+    func changeTaskStatusTo(_ task: TaskItem, status: Status) {
         isEditing = true
         modifyingItem = task
         modifyingItem.status = status

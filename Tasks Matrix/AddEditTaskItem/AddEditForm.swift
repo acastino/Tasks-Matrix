@@ -12,7 +12,7 @@ struct AddEditForm: View {
     @Binding var taskItem: TaskItem
 
     var matrix = Matrix.allCases
-    var statuses = Status.allCases
+    var statuses = Status.visibleCases
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {

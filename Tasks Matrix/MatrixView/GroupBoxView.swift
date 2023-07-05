@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GroupBoxView: View {
     let matrix: Matrix
+    let count: Int
     var body: some View {
         ZStack {
             GroupBox(
@@ -16,7 +17,8 @@ struct GroupBoxView: View {
             ) {
                 Text(matrix.action)
                     .foregroundColor(.gray)
-                Text("  123  ")
+                Text(String(count))
+                    .padding(.horizontal, 10)
                     .background(matrix.color)
                     .cornerRadius(10)
                     .padding(EdgeInsets(top: -10, leading: 0, bottom: -6, trailing: 0))
@@ -26,7 +28,7 @@ struct GroupBoxView: View {
                 Spacer()
                 Image(systemName: "chevron.right")
                     .foregroundColor(.gray)
-                    .offset(x: -8)
+                    .offset(x: -10)
             }
         }
         .padding(.bottom, 7)
@@ -35,7 +37,7 @@ struct GroupBoxView: View {
 
 struct GroupBoxView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupBoxView(matrix: .crises)
+        GroupBoxView(matrix: .crises, count: 123)
             .previewLayout(.sizeThatFits)
             .fixedSize()
     }

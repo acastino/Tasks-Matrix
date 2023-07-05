@@ -12,7 +12,7 @@ struct KanbanPickerView: View {
     @Binding var currentStatus: Status
     var tasksByMatrix: [TaskItem]
 
-    var statuses: [Status] = Status.allCases
+    var statuses: [Status] = Status.visibleCases
     var tasksCount: [Status: Int] {
         Dictionary(uniqueKeysWithValues: statuses.map { status in
             (status, tasksByMatrix.filter(by: status).count)
