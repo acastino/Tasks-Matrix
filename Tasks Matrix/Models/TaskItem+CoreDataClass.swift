@@ -1,23 +1,78 @@
 //
-//  TaskItem.swift
+//  TaskItem+CoreDataClass.swift
 //  Tasks Matrix
 //
-//  Created by Amante Castino on 6/29/23.
+//  Created by Amante Castino on 7/10/23.
+//
 //
 
 import Foundation
+import CoreData
 
-struct TaskItem: Identifiable {
-    let id = UUID()
-    var title: String
-    var notes: String
-    var matrix: Matrix
-    var status: Status = .todo
+@objc(TaskItem)
+public class TaskItem: NSManagedObject {
+    let context = PersistenceController.shared.container.viewContext
 }
 
 extension TaskItem {
+    var title: String {
+        get {
+            titleRawStringValue ?? ""
+        }
+        set {
+            titleRawStringValue = newValue
+        }
+    }
+    var notes: String {
+        get {
+            notesRawStringValue ?? ""
+        }
+        set {
+            notesRawStringValue = newValue
+        }
+    }
+    var matrix: Matrix {
+        get {
+            Matrix(rawValue: matrixRawEnumVal!)!
+        }
+        set {
+            matrixRawEnumVal = newValue.rawValue
+        }
+    }
+    var status: Status {
+        get {
+            Status(rawValue: statusRawEnumVal!)!
+        }
+        set {
+            statusRawEnumVal = newValue.rawValue
+        }
+    }
+
+    convenience init(id: UUID = UUID(), title: String, notes: String, matrix: Matrix, status: Status = .todo) {
+        self.init(entity: TaskItem.entity(), insertInto: nil)
+        self.id = id
+        self.title = title
+        self.notes = notes
+        self.matrix = matrix
+        self.status = status
+    }
+
     static func emptyTask(with matrix: Matrix) -> TaskItem {
         TaskItem(title: "", notes: "", matrix: matrix)
+    }
+    
+    func saveAsNewItem() {
+        context.insert(self)
+        try! context.save()
+    }
+    
+    func update(with copy: TaskItem) {
+        self.id = copy.id
+        self.matrix = copy.matrix
+        self.notes = copy.notes
+        self.status = copy.status
+        self.title = copy.title
+        try! context.save()
     }
 }
 

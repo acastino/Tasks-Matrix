@@ -13,7 +13,6 @@ struct AddEditForm: View {
 
     var matrix = Matrix.allCases
     var statuses = Status.visibleCases
-    let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
         Form {
@@ -30,8 +29,8 @@ struct AddEditForm: View {
                 }
             }
             Section {
-                CustomTextField("Title", text: $taskItem.title)
-                CustomTextEditor("Notes", text: $taskItem.notes)
+                CustomTextField("Title", text: $taskItem.titleRawStringValue)
+                CustomTextEditor("Notes", text: $taskItem.notesRawStringValue)
             }
         }
     }

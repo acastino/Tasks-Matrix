@@ -17,15 +17,20 @@ extension ListView {
 
     func openSheetToEdit(_ task: TaskItem) {
         isEditing = true
-        modifyingItem = task
+        modifyingItem = .emptyTask(with: matrix)
+        modifyingItem.update(with: task)
         sheetShown.toggle()
     }
 
     func changeTaskStatusTo(_ task: TaskItem, status: Status) {
         isEditing = true
-        modifyingItem = task
-        modifyingItem.status = status
-        saveChangesMadeToTaskItem()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            withAnimation {
+                modifyingItem = task
+                modifyingItem.status = status
+                saveChangesMadeToTaskItem()
+            }
+        }
     }
 
     func saveChangesMadeToTaskItem() {
@@ -34,11 +39,11 @@ extension ListView {
                 return
             }
             withAnimation {
-                allTasks[index] = modifyingItem
+                allTasks[index].update(with: modifyingItem)
             }
         } else {
             withAnimation {
-                allTasks.insert(modifyingItem, at: 0)
+                modifyingItem.saveAsNewItem()
             }
         }
     }

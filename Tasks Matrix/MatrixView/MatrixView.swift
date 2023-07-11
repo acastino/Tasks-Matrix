@@ -12,7 +12,12 @@ struct MatrixView: View {
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     let matrixCases = Matrix.allCases
 
-    @State var allTasks = TaskItem.sampleData
+    @FetchRequest(entity: TaskItem.entity(), sortDescriptors: [])
+    var allTasksQuery: FetchedResults<TaskItem>
+    var allTasks: [TaskItem] {
+        allTasksQuery.map { $0 }
+    }
+
     var matrixCounts: [Matrix: Int] {
         matrixCases.reduce(into: [Matrix: Int]()) { partialResult, matrix in
             partialResult[matrix] = allTasks.filter(by: matrix).filter({ task in
@@ -27,7 +32,7 @@ struct MatrixView: View {
                 LazyVGrid(columns: columns) {
                     ForEach(matrixCases, id: \.self) { matrix in
                         NavigationLink {
-                            ListView(matrix: matrix, allTasks: $allTasks)
+                            ListView(matrix: matrix, allTasks: allTasks)
                         } label: {
                             GroupBoxView(matrix: matrix, count: matrixCounts[matrix] ?? 0)
                         }

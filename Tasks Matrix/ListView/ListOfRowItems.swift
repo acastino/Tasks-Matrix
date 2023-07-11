@@ -21,9 +21,7 @@ struct ListOfRowItems<Item: Identifiable, Content: View>: View {
     var body: some View {
         List {
             ForEach(items) { item in
-                VStack {
-                    content(item)
-                }
+                content(item)
             }
             .padding(.vertical, -5)
             .padding(.horizontal, -20)

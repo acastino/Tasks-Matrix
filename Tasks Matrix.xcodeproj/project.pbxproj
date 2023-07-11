@@ -20,7 +20,6 @@
 		3EB6F75F2A4D8B8F005E5571 /* GroupBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F75E2A4D8B8F005E5571 /* GroupBoxView.swift */; };
 		3EB6F7622A4D8BB1005E5571 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F7612A4D8BB1005E5571 /* Matrix.swift */; };
 		3EB6F7642A4D8BC0005E5571 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F7632A4D8BC0005E5571 /* Status.swift */; };
-		3EB6F7662A4D8BCE005E5571 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F7652A4D8BCE005E5571 /* TaskItem.swift */; };
 		3EB6F7692A4D8C0C005E5571 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F7682A4D8C0C005E5571 /* ListView.swift */; };
 		3EB6F76B2A4D8C20005E5571 /* KanbanPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F76A2A4D8C20005E5571 /* KanbanPickerView.swift */; };
 		3EB6F76E2A4DB6D5005E5571 /* AddEditForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F76D2A4DB6D5005E5571 /* AddEditForm.swift */; };
@@ -28,6 +27,10 @@
 		3EB9103E2A54F208009F15A2 /* ListOfRowItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB9103D2A54F208009F15A2 /* ListOfRowItems.swift */; };
 		3EB910402A54F2A8009F15A2 /* SwipeToRightContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB9103F2A54F2A8009F15A2 /* SwipeToRightContent.swift */; };
 		3EB910422A54F342009F15A2 /* SwipeToLeftContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB910412A54F342009F15A2 /* SwipeToLeftContent.swift */; };
+		3EB910672A58F3E4009F15A2 /* TasksMatrix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3EB910652A58F3E4009F15A2 /* TasksMatrix.xcdatamodeld */; };
+		3EB910892A5BD374009F15A2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB910882A5BD374009F15A2 /* Persistence.swift */; };
+		3EB910982A5C0D65009F15A2 /* TaskItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB910962A5C0D65009F15A2 /* TaskItem+CoreDataClass.swift */; };
+		3EB910992A5C0D65009F15A2 /* TaskItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB910972A5C0D65009F15A2 /* TaskItem+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +48,6 @@
 		3EB6F75E2A4D8B8F005E5571 /* GroupBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupBoxView.swift; sourceTree = "<group>"; };
 		3EB6F7612A4D8BB1005E5571 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		3EB6F7632A4D8BC0005E5571 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
-		3EB6F7652A4D8BCE005E5571 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		3EB6F7682A4D8C0C005E5571 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		3EB6F76A2A4D8C20005E5571 /* KanbanPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbanPickerView.swift; sourceTree = "<group>"; };
 		3EB6F76D2A4DB6D5005E5571 /* AddEditForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditForm.swift; sourceTree = "<group>"; };
@@ -53,6 +55,10 @@
 		3EB9103D2A54F208009F15A2 /* ListOfRowItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfRowItems.swift; sourceTree = "<group>"; };
 		3EB9103F2A54F2A8009F15A2 /* SwipeToRightContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToRightContent.swift; sourceTree = "<group>"; };
 		3EB910412A54F342009F15A2 /* SwipeToLeftContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToLeftContent.swift; sourceTree = "<group>"; };
+		3EB910662A58F3E4009F15A2 /* TasksMatrix.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TasksMatrix.xcdatamodel; sourceTree = "<group>"; };
+		3EB910882A5BD374009F15A2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		3EB910962A5C0D65009F15A2 /* TaskItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3EB910972A5C0D65009F15A2 /* TaskItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,8 @@
 				3EB6F7672A4D8BF2005E5571 /* ListView */,
 				3EB6F75D2A4D8B4D005E5571 /* MatrixView */,
 				3EB6F74E2A4D7B49005E5571 /* Tasks_MatrixApp.swift */,
+				3EB910882A5BD374009F15A2 /* Persistence.swift */,
+				3EB910652A58F3E4009F15A2 /* TasksMatrix.xcdatamodeld */,
 				3EB6F7522A4D7B4A005E5571 /* Assets.xcassets */,
 				3EB6F7542A4D7B4A005E5571 /* Preview Content */,
 			);
@@ -128,9 +136,10 @@
 		3EB6F7602A4D8BA5005E5571 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3EB910962A5C0D65009F15A2 /* TaskItem+CoreDataClass.swift */,
+				3EB910972A5C0D65009F15A2 /* TaskItem+CoreDataProperties.swift */,
 				3EB6F7612A4D8BB1005E5571 /* Matrix.swift */,
 				3EB6F7632A4D8BC0005E5571 /* Status.swift */,
-				3EB6F7652A4D8BCE005E5571 /* TaskItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,13 +147,13 @@
 		3EB6F7672A4D8BF2005E5571 /* ListView */ = {
 			isa = PBXGroup;
 			children = (
+				3E2758012A4F4B2D003D09B9 /* ListView+DataChanges.swift */,
 				3EB6F7682A4D8C0C005E5571 /* ListView.swift */,
 				3EB9103D2A54F208009F15A2 /* ListOfRowItems.swift */,
 				3E2757F72A4E6771003D09B9 /* RowItemView.swift */,
 				3EB9103F2A54F2A8009F15A2 /* SwipeToRightContent.swift */,
 				3EB910412A54F342009F15A2 /* SwipeToLeftContent.swift */,
 				3EB6F76A2A4D8C20005E5571 /* KanbanPickerView.swift */,
-				3E2758012A4F4B2D003D09B9 /* ListView+DataChanges.swift */,
 			);
 			path = ListView;
 			sourceTree = "<group>";
@@ -233,17 +242,20 @@
 				3E5801CD2A4DF27B00BB44F4 /* CustomTextField.swift in Sources */,
 				3E2757FA2A4E7999003D09B9 /* ScreenHelper.swift in Sources */,
 				3EB9103E2A54F208009F15A2 /* ListOfRowItems.swift in Sources */,
-				3EB6F7662A4D8BCE005E5571 /* TaskItem.swift in Sources */,
 				3EB6F7642A4D8BC0005E5571 /* Status.swift in Sources */,
 				3EB6F7692A4D8C0C005E5571 /* ListView.swift in Sources */,
 				3E2757FC2A4F248C003D09B9 /* SwipeSingleRowOnly.swift in Sources */,
 				3EB6F7512A4D7B49005E5571 /* MatrixView.swift in Sources */,
+				3EB910892A5BD374009F15A2 /* Persistence.swift in Sources */,
 				3EB6F76B2A4D8C20005E5571 /* KanbanPickerView.swift in Sources */,
 				3EB6F76E2A4DB6D5005E5571 /* AddEditForm.swift in Sources */,
 				3EB910402A54F2A8009F15A2 /* SwipeToRightContent.swift in Sources */,
+				3EB910992A5C0D65009F15A2 /* TaskItem+CoreDataProperties.swift in Sources */,
 				3E2758022A4F4B2D003D09B9 /* ListView+DataChanges.swift in Sources */,
 				3EB910422A54F342009F15A2 /* SwipeToLeftContent.swift in Sources */,
+				3EB910672A58F3E4009F15A2 /* TasksMatrix.xcdatamodeld in Sources */,
 				3EB6F7702A4DBBC5005E5571 /* AddEditTaskItemSheet.swift in Sources */,
+				3EB910982A5C0D65009F15A2 /* TaskItem+CoreDataClass.swift in Sources */,
 				3EB6F74F2A4D7B49005E5571 /* Tasks_MatrixApp.swift in Sources */,
 				3EB6F75F2A4D8B8F005E5571 /* GroupBoxView.swift in Sources */,
 				3E2757F82A4E6771003D09B9 /* RowItemView.swift in Sources */,
@@ -445,6 +457,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3EB910652A58F3E4009F15A2 /* TasksMatrix.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3EB910662A58F3E4009F15A2 /* TasksMatrix.xcdatamodel */,
+			);
+			currentVersion = 3EB910662A58F3E4009F15A2 /* TasksMatrix.xcdatamodel */;
+			path = TasksMatrix.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3EB6F7432A4D7B49005E5571 /* Project object */;
 }

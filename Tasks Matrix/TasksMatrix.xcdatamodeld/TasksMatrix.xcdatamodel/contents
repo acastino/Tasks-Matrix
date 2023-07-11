@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TaskItem" representedClassName="TaskItem" syncable="YES">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="matrixRawEnumVal" attributeType="String" customClassName="Matrix"/>
+        <attribute name="notesRawStringValue" attributeType="String"/>
+        <attribute name="statusRawEnumVal" attributeType="String" customClassName="Status"/>
+        <attribute name="titleRawStringValue" attributeType="String"/>
+    </entity>
+</model>

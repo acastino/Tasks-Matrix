@@ -33,6 +33,7 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
         }
         return isSwipingToRight ? swipeToRight_onSwipe : swipeToLeft_onSwipe
     }
+    @State var isFullSwipeTriggered = false
 
     let ssro_id = UUID()
     var ssro_fetchSelf: RowItemView { self }
@@ -73,6 +74,7 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
                 )
                 .onTapGesture {
                     ssro_cancelPreviousRowSwipe()
+                    print("cancelTap: \(cancelTap)")
                     if cancelTap {
                         return
                     }
@@ -81,6 +83,7 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
             }
             .offset(x: rowOffset < 0 ? rowOffset : 0)
         }
+        .opacity(isFullSwipeTriggered ? 0 : 1)
     }
     
     func triggerFullSwipeEvent() {
@@ -95,7 +98,9 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
     }
     
     func handleFullSwipeEvent() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        isFullSwipeTriggered = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            isFullSwipeTriggered = false
             cancelTap = false
             withAnimation {
                 rowOffset = 0
@@ -134,13 +139,13 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
     }
 
     func onSwipeEnded(_ value: DragGesture.Value) {
+        cancelTap = false
         guard let isSwipingToRight else {
             return
         }
         if !hasSwipeToLeft && !hasSwipeToRight {
             return
         }
-        cancelTap = false
         let width = value.translation.width
         let widthAbsolute = isSwipingToRight ? width : -width
         let holdAtWidth = isSwipingToRight ? partialSwipeHoldAtWidth : -partialSwipeHoldAtWidth

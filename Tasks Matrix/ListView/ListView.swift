@@ -11,7 +11,7 @@ struct ListView: View {
 
     var matrix: Matrix
 
-    @Binding var allTasks: [TaskItem]
+    var allTasks: [TaskItem]
     var tasksByMatrix: [TaskItem] {
         allTasks.filter(by: matrix)
     }
@@ -63,8 +63,8 @@ struct ListView: View {
         .toolbar {
             ToolbarItem(placement: .status) {
                 KanbanPickerView(
-                    currentStatus: $currentStatus,
-                    tasksByMatrix: tasksByMatrix
+                    matrix: matrix,
+                    currentStatus: $currentStatus
                 )
             }
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -88,7 +88,7 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ListView(matrix: .crises, allTasks: .constant(TaskItem.sampleData))
+            ListView(matrix: .crises, allTasks: TaskItem.sampleData)
         }
     }
 }
