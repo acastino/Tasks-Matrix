@@ -11,7 +11,17 @@ struct ListView: View {
 
     var matrix: Matrix
 
-    var allTasks: [TaskItem]
+    @FetchRequest
+    var allTasksQuery: FetchedResults<TaskItem>
+
+    init(matrix: Matrix) {
+        self.matrix = matrix
+        self._allTasksQuery = FetchRequest(entity: TaskItem.entity(), sortDescriptors: [], predicate: NSPredicate(format: "matrixRawEnumVal = %@", matrix.rawValue))
+    }
+
+    var allTasks: [TaskItem] {
+        allTasksQuery.map { $0 }
+    }
     var tasksByMatrix: [TaskItem] {
         allTasks.filter(by: matrix)
     }
@@ -88,7 +98,7 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ListView(matrix: .crises, allTasks: TaskItem.sampleData)
+            ListView(matrix: .crises)
         }
     }
 }

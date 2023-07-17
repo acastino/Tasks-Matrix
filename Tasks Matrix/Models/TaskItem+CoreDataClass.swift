@@ -12,6 +12,7 @@ import CoreData
 @objc(TaskItem)
 public class TaskItem: NSManagedObject {
     let context = PersistenceController.shared.container.viewContext
+    var matrixCallback: (Matrix) -> Void = {_ in }
 }
 
 extension TaskItem {
@@ -37,6 +38,7 @@ extension TaskItem {
         }
         set {
             matrixRawEnumVal = newValue.rawValue
+            matrixCallback(newValue)
         }
     }
     var status: Status {
@@ -60,19 +62,19 @@ extension TaskItem {
     static func emptyTask(with matrix: Matrix) -> TaskItem {
         TaskItem(title: "", notes: "", matrix: matrix)
     }
-    
+
     func saveAsNewItem() {
         context.insert(self)
-        try! context.save()
+        try? context.save()
     }
-    
+
     func update(with copy: TaskItem) {
         self.id = copy.id
         self.matrix = copy.matrix
         self.notes = copy.notes
         self.status = copy.status
         self.title = copy.title
-        try! context.save()
+        try? context.save()
     }
 }
 

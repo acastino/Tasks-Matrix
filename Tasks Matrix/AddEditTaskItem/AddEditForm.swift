@@ -17,15 +17,11 @@ struct AddEditForm: View {
     var body: some View {
         Form {
             Section {
-                Picker("Matrix", selection: $taskItem.matrix) {
-                    ForEach(matrix, id: \.self) { item in
-                        Text(item.name)
-                    }
+                CustomPicker("Matrix", selection: matrix, chosenItem: $taskItem.matrix) { matrix in
+                    Text(matrix.name)
                 }
-                Picker("Status", selection: $taskItem.status) {
-                    ForEach(statuses, id: \.self) { item in
-                        Text(item.rawValue)
-                    }
+                CustomPicker("Status", selection: statuses, chosenItem: $taskItem.status) { status in
+                    Text(status.rawValue)
                 }
             }
             Section {

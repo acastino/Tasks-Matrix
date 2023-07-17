@@ -32,7 +32,7 @@ struct MatrixView: View {
                 LazyVGrid(columns: columns) {
                     ForEach(matrixCases, id: \.self) { matrix in
                         NavigationLink {
-                            ListView(matrix: matrix, allTasks: allTasks)
+                            ListView(matrix: matrix)
                         } label: {
                             GroupBoxView(matrix: matrix, count: matrixCounts[matrix] ?? 0)
                         }

@@ -74,7 +74,6 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
                 )
                 .onTapGesture {
                     ssro_cancelPreviousRowSwipe()
-                    print("cancelTap: \(cancelTap)")
                     if cancelTap {
                         return
                     }
