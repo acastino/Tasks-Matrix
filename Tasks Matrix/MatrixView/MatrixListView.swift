@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MatrixView: View {
+struct MatrixListView: View {
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     let matrixCases = Matrix.allCases
@@ -34,7 +34,7 @@ struct MatrixView: View {
                         NavigationLink {
                             ListView(matrix: matrix)
                         } label: {
-                            GroupBoxView(matrix: matrix, count: matrixCounts[matrix] ?? 0)
+                            MatrixItemView(matrix: matrix, count: matrixCounts[matrix] ?? 0)
                         }
                         .buttonStyle(.plain)
                     }
@@ -50,6 +50,6 @@ struct MatrixView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MatrixView()
+        MatrixListView()
     }
 }

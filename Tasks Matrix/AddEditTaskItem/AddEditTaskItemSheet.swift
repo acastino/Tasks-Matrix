@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AddEditTaskItemSheet: View {
-    
+
+    let matrix: Matrix
     @Binding var isEditing: Bool
     @Binding var taskItem: TaskItem
     let completion: () -> Void
@@ -23,13 +24,14 @@ struct AddEditTaskItemSheet: View {
         return (isEditing ? "Edit " : "Add ") + currentMatrix.singularTerm
     }
 
-    init(isEditing: Binding<Bool>, taskItem: Binding<TaskItem>, completion: @escaping () -> Void, onSuccess: @escaping () -> Void, onCancel: @escaping () -> Void = {}) {
+    init(matrix: Matrix, isEditing: Binding<Bool>, taskItem: Binding<TaskItem>, completion: @escaping () -> Void, onSuccess: @escaping () -> Void, onCancel: @escaping () -> Void = {}) {
+        self.matrix = matrix
         self._isEditing = isEditing
         self._taskItem = taskItem
         self.completion = completion
         self.onSuccess = onSuccess
         self.onCancel = onCancel
-        self.currentMatrix = taskItem.matrix.wrappedValue
+        self.currentMatrix = matrix
     }
 
     var body: some View {
@@ -62,6 +64,7 @@ struct AddTaskItemSheet_Previews: PreviewProvider {
         NavigationStack {
         }.sheet(isPresented: .constant(true)) {
             AddEditTaskItemSheet(
+                matrix: .crises,
                 isEditing: .constant(true),
                 taskItem: .constant(.emptyTask(with: .crises)),
                 completion: {},

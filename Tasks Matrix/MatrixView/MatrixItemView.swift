@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GroupBoxView: View {
+struct MatrixItemView: View {
     let matrix: Matrix
     let count: Int
     var body: some View {
@@ -37,7 +37,7 @@ struct GroupBoxView: View {
 
 struct GroupBoxView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupBoxView(matrix: .crises, count: 123)
+        MatrixItemView(matrix: .crises, count: 123)
             .previewLayout(.sizeThatFits)
             .fixedSize()
     }

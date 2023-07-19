@@ -27,7 +27,7 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
     var isSwipingToRight: Bool? {
         rowOffset > 0 ? true : rowOffset < 0 ? false : nil
     }
-    var triggerUserDefined_onSwipe: () -> Void {
+    var triggerUserDefinedOnSwipe: () -> Void {
         guard let isSwipingToRight else {
             return {}
         }
@@ -37,26 +37,38 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
 
     let ssro_id = UUID()
     var ssro_fetchSelf: RowItemView { self }
-    func ssro_howToCancelSwipe() {
-        cancelTap = false
-        rowOffset = 0
+    func ssro_cancelPartialSwipe() {
+        withAnimation {
+            cancelTap = false
+            rowOffset = 0
+        }
     }
 
     var body: some View {
         ZStack {
+            GeometryReader { proxy in
+                Color.clear
+                    .onChange(of: proxy.frame(in: .global).origin.y) { newValue in
+                        ssro_cancelPartialSwipe()
+                    }
+            }
+            .onDisappear {
+                ssro_cancelPartialSwipe()
+            }
+
             if let isSwipingToRight, !isSwipingToRight && hasSwipeToLeft {
                 VStack {
                     swipeToLeft_content(triggerFullSwipeEvent)
                 }
             }
-            
+
             ZStack {
                 if let isSwipingToRight, isSwipingToRight && hasSwipeToRight {
                     VStack {
                         swipeToRight_content(triggerFullSwipeEvent)
                     }
                 }
-                
+
                 VStack {
                     Spacer(minLength: 0)
                     HStack {
@@ -70,7 +82,9 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
                 .background(.background)
                 .offset(x: rowOffset > 0 ? rowOffset : 0)
                 .gesture(
-                    DragGesture().onChanged(onSwipeChanged(_:)).onEnded(onSwipeEnded(_:))
+                    DragGesture(minimumDistance: partialSwipeHoldAtWidth, coordinateSpace: .global)
+                        .onChanged(onSwipeChanged(_:))
+                        .onEnded(onSwipeEnded(_:))
                 )
                 .onTapGesture {
                     ssro_cancelPreviousRowSwipe()
@@ -82,9 +96,11 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
             }
             .offset(x: rowOffset < 0 ? rowOffset : 0)
         }
+        .padding(.vertical, -5)
+        .padding(.horizontal, -20)
         .opacity(isFullSwipeTriggered ? 0 : 1)
     }
-    
+
     func triggerFullSwipeEvent() {
         guard let isSwipingToRight else {
             return
@@ -95,7 +111,7 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
             handleFullSwipeEvent()
         }
     }
-    
+
     func handleFullSwipeEvent() {
         isFullSwipeTriggered = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
@@ -105,9 +121,9 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
                 rowOffset = 0
             }
         }
-        triggerUserDefined_onSwipe()
+        triggerUserDefinedOnSwipe()
     }
-    
+
     func onSwipeChanged(_ value: DragGesture.Value) {
         if !hasSwipeToLeft && !hasSwipeToRight {
             return
@@ -170,7 +186,6 @@ struct RowItemView<Content: View, SRContent: View, SLContent: View>: View, Swipe
             }
         }
     }
-    
 }
 
 struct RowItemView_Previews: PreviewProvider {

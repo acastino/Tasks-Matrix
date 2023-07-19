@@ -57,6 +57,8 @@ extension TaskItem {
         self.notes = notes
         self.matrix = matrix
         self.status = status
+        self.dateCreatedVal = .now
+        self.dateUpdatedVal = .now
     }
 
     static func emptyTask(with matrix: Matrix) -> TaskItem {
@@ -70,10 +72,11 @@ extension TaskItem {
 
     func update(with copy: TaskItem) {
         self.id = copy.id
-        self.matrix = copy.matrix
-        self.notes = copy.notes
-        self.status = copy.status
         self.title = copy.title
+        self.notes = copy.notes
+        self.matrix = copy.matrix
+        self.status = copy.status
+        self.dateUpdatedVal = .now
         try? context.save()
     }
 }
@@ -85,39 +88,5 @@ extension [TaskItem] {
 
     func filter(by matrix: Matrix) -> [TaskItem] {
         self.filter { $0.matrix == matrix }
-    }
-}
-
-extension TaskItem {
-    static var sampleData: [TaskItem] {
-        [
-            TaskItem(title: "Crises type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .crises),
-            TaskItem(title: "Crises type", notes: "tehjlfaksf hads fhaisd", matrix: .crises),
-            TaskItem(title: "Crises type", notes: "tehjlfaksf hads fhaisd", matrix: .crises),
-            TaskItem(title: "Crises type", notes: "", matrix: .crises, status: .inProgress),
-            TaskItem(title: "Crises type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio ds", matrix: .crises, status: .inProgress),
-            TaskItem(title: "Crises type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio ds", matrix: .crises, status: .inProgress),
-            TaskItem(title: "Crises type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .crises, status: .completed),
-            TaskItem(title: "Crises type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .crises, status: .completed),
-            TaskItem(title: "Crises type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .crises, status: .completed),
-            TaskItem(title: "Goals type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .goals),
-            TaskItem(title: "Goals type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .goals),
-            TaskItem(title: "Goals type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .goals, status: .inProgress),
-            TaskItem(title: "Goals type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .goals, status: .inProgress),
-            TaskItem(title: "Goals type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .goals, status: .completed),
-            TaskItem(title: "Goals type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .goals, status: .completed),
-            TaskItem(title: "Interruptions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .interruptions),
-            TaskItem(title: "Interruptions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .interruptions),
-            TaskItem(title: "Interruptions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .interruptions, status: .inProgress),
-            TaskItem(title: "Interruptions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .interruptions, status: .inProgress),
-            TaskItem(title: "Interruptions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .interruptions, status: .completed),
-            TaskItem(title: "Interruptions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .interruptions, status: .completed),
-            TaskItem(title: "Distractions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .distractions),
-            TaskItem(title: "Distractions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .distractions),
-            TaskItem(title: "Distractions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .distractions, status: .inProgress),
-            TaskItem(title: "Distractions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .distractions, status: .inProgress),
-            TaskItem(title: "Distractions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .distractions, status: .completed),
-            TaskItem(title: "Distractions type", notes: "tehjlfaksf hads fhaisdh aisuhf aisuhfiadsh fioadhsfio dsahfioudhs ifhdsaifh oasfhs as adsfndfsgkljh jklj jk  hj  hjk hjkg hjkghjk ghjk hj hjk hjkg hj ghjkg", matrix: .distractions, status: .completed),
-        ]
     }
 }

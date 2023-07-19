@@ -37,7 +37,7 @@ enum Status: String, CaseIterable {
     }
     var swipeToRight_icon: String {
         switch self {
-        case .completed: return "trash"
+        case .completed, .deleted: return "trash"
         default: return "envelope.arrow.triangle.branch"
         }
     }

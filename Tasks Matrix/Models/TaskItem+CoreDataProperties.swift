@@ -2,7 +2,7 @@
 //  TaskItem+CoreDataProperties.swift
 //  Tasks Matrix
 //
-//  Created by Amante Castino on 7/11/23.
+//  Created by Amante Castino on 7/20/23.
 //
 //
 
@@ -16,6 +16,8 @@ extension TaskItem {
         return NSFetchRequest<TaskItem>(entityName: "TaskItem")
     }
 
+    @NSManaged public var dateCreatedVal: Date?
+    @NSManaged public var dateUpdatedVal: Date?
     @NSManaged public var id: UUID?
     @NSManaged public var matrixRawEnumVal: String?
     @NSManaged public var notesRawStringValue: String?

@@ -16,7 +16,12 @@ struct ListView: View {
 
     init(matrix: Matrix) {
         self.matrix = matrix
-        self._allTasksQuery = FetchRequest(entity: TaskItem.entity(), sortDescriptors: [], predicate: NSPredicate(format: "matrixRawEnumVal = %@", matrix.rawValue))
+        _allTasksQuery = FetchRequest(
+            entity: TaskItem.entity(),
+            sortDescriptors: [NSSortDescriptor(key: "dateUpdatedVal", ascending: false)],
+            predicate: NSPredicate(format: "matrixRawEnumVal = %@", matrix.rawValue)
+        )
+        modifyingItem = .emptyTask(with: matrix)
     }
 
     var allTasks: [TaskItem] {
@@ -43,30 +48,32 @@ struct ListView: View {
     }
 
     var body: some View {
-        ListOfRowItems(tasksToShow) { task in
-            RowItemView(hasSwipeToRight: hasSwipeToRight, hasSwipeToLeft: hasSwipeToLeft) {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(task.title)
-                        Spacer(minLength: 0)
+        List {
+            ForEach(tasksToShow) { task in
+                RowItemView(hasSwipeToRight: hasSwipeToRight, hasSwipeToLeft: hasSwipeToLeft) {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text(task.title)
+                            Spacer(minLength: 0)
+                        }
+                        if !task.notes.isEmpty {
+                            Text(task.notes)
+                                .foregroundColor(.gray)
+                                .font(.subheadline)
+                                .lineLimit(2)
+                        }
                     }
-                    if !task.notes.isEmpty {
-                        Text(task.notes)
-                            .foregroundColor(.gray)
-                            .font(.subheadline)
-                            .lineLimit(2)
-                    }
+                } onTapGesture: {
+                    openSheetToEdit(task)
+                } swipeToRight_content: { triggerFullSwipeEvent in
+                    SwipeToRightContent(task, triggerFullSwipeEvent)
+                } swipeToRight_onSwipe: {
+                    changeTaskStatusTo(task, status: task.status.swipeToRight_nextStep)
+                } swipeToLeft_content: { triggerFullSwipeEvent in
+                    SwipeToLeftContent(task, triggerFullSwipeEvent)
+                } swipeToLeft_onSwipe: {
+                    changeTaskStatusTo(task, status: task.status.swipeToLeft_nextStep)
                 }
-            } onTapGesture: {
-                openSheetToEdit(task)
-            } swipeToRight_content: { triggerFullSwipeEvent in
-                SwipeToRightContent(task, triggerFullSwipeEvent)
-            } swipeToRight_onSwipe: {
-                changeTaskStatusTo(task, status: task.status.swipeToRight_nextStep)
-            } swipeToLeft_content: { triggerFullSwipeEvent in
-                SwipeToLeftContent(task, triggerFullSwipeEvent)
-            } swipeToLeft_onSwipe: {
-                changeTaskStatusTo(task, status: task.status.swipeToLeft_nextStep)
             }
         }
         .navigationTitle(matrix.name)
@@ -86,7 +93,7 @@ struct ListView: View {
             }
         }
         .sheet(isPresented: $sheetShown) {
-            AddEditTaskItemSheet(isEditing: $isEditing, taskItem: $modifyingItem) {
+            AddEditTaskItemSheet(matrix: matrix, isEditing: $isEditing, taskItem: $modifyingItem) {
                 sheetShown.toggle()
             } onSuccess: {
                 saveChangesMadeToTaskItem()

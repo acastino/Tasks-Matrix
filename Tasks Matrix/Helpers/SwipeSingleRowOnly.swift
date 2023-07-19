@@ -10,7 +10,7 @@ import SwiftUI
 protocol SwipeSingleRowOnly {
     var ssro_id: UUID { get }
     var ssro_fetchSelf: Self { get }
-    func ssro_howToCancelSwipe() -> Void
+    func ssro_cancelPartialSwipe() -> Void
 }
 extension SwipeSingleRowOnly {
     func ssro_cancelPreviousRowSwipe() {
@@ -29,8 +29,6 @@ fileprivate class SSRO_Monitor {
         guard let previousRow, previousRow.ssro_id != currentRow.ssro_id else {
             return
         }
-        withAnimation {
-            previousRow.ssro_howToCancelSwipe()
-        }
+        previousRow.ssro_cancelPartialSwipe()
     }
 }
